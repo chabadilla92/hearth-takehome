@@ -4,6 +4,8 @@
 
 This is a simple chatbot application built with Next.js and TypeScript. The chatbot allows users to input text, which is then processed and responded to by an agent. The app includes animations and a typewriter effect for agent responses.
 
+Loom: https://www.loom.com/share/58795a982322444d89a1212e1c478981
+
 ## Features
 
 - **Chat Interface**: Users can type messages and receive automated responses.
