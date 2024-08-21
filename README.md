@@ -21,7 +21,7 @@ https://hearth-takehome-nine.vercel.app/
 To get started, clone the repository and install the necessary dependencies:
 
 ```bash
-git clone https://github.com/your-username/hearth-takehome.git
+git clone https://github.com/chabadilla92/hearth-takehome.git
 cd hearth-takehome
 npm install
 ```
