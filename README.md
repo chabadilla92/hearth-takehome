@@ -1,21 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Hearth Takehome Assignment
 
-## Getting Started
+## Overview
 
-First, run the development server:
+This is a simple chatbot application built with Next.js and TypeScript. The chatbot allows users to input text, which is then processed and responded to by an agent. The app includes animations and a typewriter effect for agent responses.
+
+## Features
+
+- **Chat Interface**: Users can type messages and receive automated responses.
+- **Filter Functionality**: Filter out specific messages (e.g., "Goodbye") using a button.
+- **Animations**: Smooth transitions and animations for message entries using Framer Motion.
+- **Testing**: Unit tests for the main components to verify the functionality and reliability of the application.
+
+## Live Demo
+
+You can see a live version of the application here:
+Live Demo URL
+
+## Installation
+
+To get started, clone the repository and install the necessary dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/hearth-takehome.git
+cd hearth-takehome
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To run the development server:
+npm run dev
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# or
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+yarn dev
+
+# or
+
+pnpm dev
+
+# or
+
+bun dev
+
+To create an optimized production build:
+npm run build

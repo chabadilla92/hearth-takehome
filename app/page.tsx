@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Entry, useEntries } from './contexts/entries-context';
+import { EntriesProvider, Entry, useEntries } from './contexts/entries-context';
 
-export default function Home() {
+export default function Page() {
   const { addEntry, disableInput, entries, removeGoodbyeEntries } =
     useEntries();
 
@@ -45,7 +45,7 @@ export default function Home() {
               }`}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 10 }}
-              exist={{ opacity: 0, y: 15 }}
+              exit={{ opacity: 0, y: 15 }}
               transition={{ delay: 0.75 }}
             >
               {entry.message}
@@ -72,7 +72,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (scrolling && entriesEndRef.current) {
+    if (scrolling && entriesEndRef && entriesEndRef.current) {
       entriesEndRef.current.scrollIntoView({ behavior: 'smooth' });
       setScrolling(false);
     }
@@ -90,7 +90,7 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 10 }}
-          exist={{ opacity: 0, y: 15 }}
+          exit={{ opacity: 0, y: 15 }}
           transition={{ delay: 0.75 }}
           className='flex border border-black rounded-md h-24 basis-3/4 mx-auto my-4 flex-col items-center p-2'
         >
@@ -103,7 +103,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exist={{ opacity: 0, y: 15 }}
+            exit={{ opacity: 0, y: 15 }}
             transition={{ delay: 0.75 }}
           >
             <button
@@ -123,7 +123,7 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          exist={{ opacity: 0, y: 15 }}
+          exit={{ opacity: 0, y: 15 }}
           transition={{ delay: 0.75 }}
           className='flex basis-1/6 border border-black rounded-md'
         >
