@@ -11,6 +11,7 @@
 }
 
 body {
+  font-family: 'Indie Flower', cursive;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,

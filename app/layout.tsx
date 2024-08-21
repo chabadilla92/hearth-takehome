@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
 import { EntriesProvider } from './contexts/entries-context';
 
-const inter = Inter({ subsets: ['latin'] });
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,8 +15,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
+      <head>
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+        <link
+          href='https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap'
+          rel='stylesheet'
+        />
+      </head>
       <EntriesProvider>
-        {' '}
         <body className='h-screen bg-white p-4'>{children}</body>
       </EntriesProvider>
     </html>
