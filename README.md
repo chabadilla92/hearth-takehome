@@ -27,7 +27,7 @@ npm install
 ```
 
 ## Running the Application
-
+Ensure that you are using Node.js version >= v18.17.0.
 To run the development server:
 
 ```bash
