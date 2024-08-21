@@ -14,7 +14,7 @@ This is a simple chatbot application built with Next.js and TypeScript. The chat
 ## Live Demo
 
 You can see a live version of the application here:
-Live Demo URL
+https://hearth-takehome-nine.vercel.app/
 
 ## Installation
 
