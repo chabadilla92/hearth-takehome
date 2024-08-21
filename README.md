@@ -26,20 +26,44 @@ cd hearth-takehome
 npm install
 ```
 
+## Running the Application
+
 To run the development server:
+
+```bash
 npm run dev
-
 # or
-
 yarn dev
-
 # or
-
 pnpm dev
-
 # or
-
 bun dev
+```
 
 To create an optimized production build:
+
+```bash
 npm run build
+```
+
+Running the production build:
+
+```bash
+npm start
+```
+
+The app will start in production mode on http://localhost:3000.
+
+## Testing
+
+To run the test suite:
+
+```bash
+npm test
+```
+
+Make sure to have all the necessary configurations set up before running the tests.
+
+## Contact Information
+
+If you have any questions or need further assistance, my email is ch.abadilla@gmail.com
