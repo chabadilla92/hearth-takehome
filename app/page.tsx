@@ -13,7 +13,7 @@ export default function Page() {
 
   const entriesEndRef = useRef<HTMLDivElement | null>(null);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
 
@@ -21,7 +21,7 @@ export default function Page() {
     removeGoodbyeEntries();
   };
 
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       if (inputValue.trim()) {
         addEntry(inputValue, false);
@@ -40,8 +40,8 @@ export default function Page() {
               key={index}
               className={`flex p-4 border-2 rounded-md text-xs ${
                 entry.agent
-                  ? `border-yellow-400 w-fit`
-                  : `border-blue-600 w-fit justify-end self-end`
+                  ? `bg-gray-300 border-gray-300 w-fit shadow-md`
+                  : `bg-blue-500 text-white border-blue-500 shadow-md w-fit justify-end self-end`
               }`}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 10 }}
@@ -58,8 +58,8 @@ export default function Page() {
             key={index}
             className={`flex p-4 border-2 rounded-md text-xs ${
               entry.agent
-                ? `border-yellow-400 w-fit`
-                : `border-blue-600 w-fit justify-end self-end`
+                ? `bg-gray-300 border-gray-300 w-fit shadow-md`
+                : `bg-blue-500 text-white border-blue-500 shadow-md w-fit justify-end self-end`
             }`}
           >
             {entry.message}
@@ -85,38 +85,57 @@ export default function Page() {
   }, [entries]);
 
   return (
-    <div className='flex w-full h-full bg-white flex-row justify-between'>
-      <div className='flex border border-black rounded-2xl h-full basis-1/4'>
+    <div className='flex w-full h-full bg-white flex-row justify-center'>
+      {/* <div className='flex border border-black rounded-2xl h-full basis-1/4'>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 10 }}
           exit={{ opacity: 0, y: 15 }}
           transition={{ delay: 0.75 }}
-          className='flex border border-black rounded-md h-24 basis-3/4 mx-auto my-4 flex-col items-center p-2'
+          className='flex border border-black rounded-md h-24  flex-col items-center p-2'
         >
           <div className='font-normal text-center'>message count:</div>
           <div className='font-extrabold text-xl'>{entries.length}</div>
         </motion.div>
-      </div>
-      <div className='h-full basis-1/2'>
-        <div className='flex h-full flex-col justify-center items-center basis-1/2'>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 15 }}
+          transition={{ delay: 0.75 }}
+        >
+          <button
+            className='border border-black rounded-md px-4 py-1'
+            onClick={handleFilterButtonClick}
+          >
+            filter button
+          </button>
+        </motion.div>
+      </div> */}
+
+      <div className='flex border rounded-2xl gap-2 h-full w-60 flex-col box-border shadow-lg'>
+        <div className='border-b rounded-t-2xl bg-blue-500 text-white'>
+          {' '}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 10 }}
             exit={{ opacity: 0, y: 15 }}
             transition={{ delay: 0.75 }}
+            className='flex text-md rounded-md h-12 flex-row justify-around p-1'
           >
-            <button
-              className='border border-black rounded-md px-4 py-1'
-              onClick={handleFilterButtonClick}
+            <div className='font-extrabold'>message count:</div>
+            <motion.div
+              whileHover={{
+                scale: 1.2,
+                transition: { duration: 0.2 },
+              }}
+              whileTap={{ scale: 2 }}
+              className='font-extrabold cursor-pointer'
             >
-              filter button
-            </button>
+              {entries.length}
+            </motion.div>
           </motion.div>
         </div>
-      </div>
-      <div className='flex border border-black rounded-2xl gap-2 h-full basis-1/4 flex-col p-2 box-border max-w-xs'>
-        <div className='flex flex-col basis-5/6 overflow-y-auto gap-2'>
+        <div className='flex flex-col h-full overflow-y-auto gap-4 pl-2 pr-2'>
           {newEntries()}
           <div ref={entriesEndRef} />
         </div>
@@ -125,18 +144,50 @@ export default function Page() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 15 }}
           transition={{ delay: 0.75 }}
-          className='flex basis-1/6 border border-black rounded-md'
+          className='flex border-t border-b rounded-b-md'
         >
           {' '}
-          <textarea
-            className={`border border-transparent cursor-text rounded-md flex-1 text-xs p-4 ${
-              disableInput ? `bg-gray` : ``
-            }`}
-            placeholder='enter a value to start chatting'
+          <input
+            className='border h-2 border-transparent cursor-text rounded-md flex-1 text-xs p-4'
+            placeholder='Type a Message...'
             value={inputValue}
-            onChange={handleInputChange}
-            onKeyDown={handleKeyPress}
-          ></textarea>
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              handleInputChange(e)
+            }
+            onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
+              handleKeyPress(e)
+            }
+          ></input>
+          <motion.button
+            whileHover={{
+              scale: 1.2,
+              transition: { duration: 0.2 },
+            }}
+            whileTap={{ scale: 1.2 }}
+            className={`bg-gray-300 text-black rounded-2xl text-xs m-1 p-1 ${
+              !inputValue ? `text-gray-100` : ``
+            }`}
+            onClick={() => {
+              if (inputValue.trim()) {
+                addEntry(inputValue, false);
+                setInputValue('');
+              }
+            }}
+            disabled={!inputValue}
+          >
+            enter
+          </motion.button>
+          <motion.button
+            whileHover={{
+              scale: 1.2,
+              transition: { duration: 0.2 },
+            }}
+            whileTap={{ scale: 1.2 }}
+            className='bg-blue-500 text-white rounded-2xl text-xs m-1 p-1'
+            onClick={handleFilterButtonClick}
+          >
+            filter
+          </motion.button>
         </motion.div>
       </div>
     </div>

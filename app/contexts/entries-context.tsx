@@ -62,7 +62,6 @@ export const EntriesProvider: React.FC<{ children: ReactNode }> = ({
 
   const addEntry = (message: string, agent: boolean) => {
     setEntries((prevEntries) => [...prevEntries, { message, agent }]);
-    setDisableInput(true);
 
     setTimeout(() => {
       const agentMessage = agentResponses[currentResponseIndex];
@@ -80,7 +79,6 @@ export const EntriesProvider: React.FC<{ children: ReactNode }> = ({
       setCurrentResponseIndex(
         (prevIndex) => (prevIndex + 1) % agentResponses.length
       );
-      setDisableInput(false);
     }, 750);
   };
 

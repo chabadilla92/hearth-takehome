@@ -21,12 +21,12 @@ describe('Page', () => {
   it('handles input change', () => {
     renderWithProvider(<Page />);
 
-    const textarea = screen.getByPlaceholderText(
-      /enter a value to start chatting/i
+    const input = screen.getByPlaceholderText(
+      /type a message.../i
     );
 
-    fireEvent.change(textarea, { target: { value: 'New message' } });
+    fireEvent.change(input, { target: { value: 'New message' } });
 
-    expect(textarea).toHaveValue('New message');
+    expect(input).toHaveValue('New message');
   });
 });
