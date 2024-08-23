@@ -4,6 +4,8 @@
 
 This is a simple chatbot application built with Next.js and TypeScript. The chatbot allows users to input text, which is then processed and responded to by an agent. The app includes animations and a typewriter effect for agent responses.
 
+Loom: https://www.loom.com/share/58795a982322444d89a1212e1c478981
+
 ## Features
 
 - **Chat Interface**: Users can type messages and receive automated responses.
@@ -21,13 +23,13 @@ https://hearth-takehome-nine.vercel.app/
 To get started, clone the repository and install the necessary dependencies:
 
 ```bash
-git clone https://github.com/your-username/hearth-takehome.git
+git clone https://github.com/chabadilla92/hearth-takehome.git
 cd hearth-takehome
 npm install
 ```
 
 ## Running the Application
-
+Ensure that you are using Node.js version >= v18.17.0.
 To run the development server:
 
 ```bash
